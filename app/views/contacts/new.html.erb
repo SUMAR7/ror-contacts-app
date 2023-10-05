@@ -1,0 +1,36 @@
+<h1>New Contact</h1>
+
+<!--form_with is a rails helper method that creates a form for a model object.
+form_with takes a model object and a url (where it will post the data) as arguments.
+contacts_path is a rails helper method that returns the path for the contacts create action-->
+
+<%= form_with model: @contact, url: contacts_path do |form| %>
+
+  <!--form.label is a rails helper method that creates a label for a form field-->
+  <div class="field">
+    <%= form.label :first_name %>
+    <!--form.text_field is a rails helper method that creates a text field for a form-->
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div class="actions">
+    <!--form.submit is a rails helper method that creates a submit button for a form
+    submitting the form will send a POST request to the url specified in the form_with method-->
+    <%= form.submit 'Create Contact' %>
+  </div>
+<% end %>

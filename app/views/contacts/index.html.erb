@@ -1,0 +1,44 @@
+<!-- contacts/index.html.erb -->
+
+<!-- Display the page title -->
+<h1>All Contacts</h1>
+
+<!-- Link to create a new contact -->
+<%= link_to 'New Contact', contacts_new_path %>
+
+<!-- Create a table for displaying contacts -->
+<table>
+  <thead>
+  <!-- Define table header row -->
+  <tr>
+    <!-- Column headers for contact attributes -->
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Iterate through each contact in the @contacts list -->
+  <% @contacts.each do |contact| %>
+    <!-- Create a table row for each contact -->
+    <tr>
+      <!-- Display contact attributes in corresponding columns -->
+      <td><%= contact.first_name %></td>
+      <td><%= contact.last_name %></td>
+      <td><%= contact.email %></td>
+      <td><%= contact.phone %></td>
+      <td>
+        <!-- Links for showing, editing, and deleting a contact -->
+        <%= link_to 'Show', contact_path(contact) %>
+        <%= link_to 'Edit', edit_contact_path(contact) %>
+        <%= link_to "Destroy", contact_path(contact), data: {
+          turbo_method: :delete,   # Specify a Turbo Stream delete method
+          turbo_confirm: "Are you sure?"  # Display a confirmation dialog
+        } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

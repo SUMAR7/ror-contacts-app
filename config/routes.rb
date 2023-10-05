@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/dashboard', to: 'home#dashboard'
+
+  resources :contacts
 end

@@ -1,13 +1,16 @@
 <!-- contacts/show.html.erb -->
 
 <!-- Display the page title -->
-<h1>Contact Details</h1>
+<h1 class="col-start-1 col-end-3 mb-5">Contact Details</h1>
 
 <!-- Display contact attributes using @contact instance variable defined inside "show" action -->
-<p><strong>First Name:</strong> <%= @contact.first_name %></p>
-<p><strong>Last Name:</strong> <%= @contact.last_name %></p>
-<p><strong>Email:</strong> <%= @contact.email %></p>
-<p><strong>Phone:</strong> <%= @contact.phone %></p>
+<p class="mb-5"><strong class="text-blue-500">First Name:</strong> <%= @contact.first_name %></p>
+<p class="mb-5"><strong class="text-blue-500">Last Name:</strong> <%= @contact.last_name %></p>
+<p class="mb-5"><strong class="text-blue-500">Email:</strong> <%= @contact.email %></p>
+<p class="mb-5"><strong class="text-blue-500">Phone:</strong> <%= @contact.phone %></p>
 
-<!-- Link to go back to the contacts list -->
-<%= link_to 'Back', contacts_path %>
+<div class="mt-5">
+  <!-- Link to go back to the contacts list -->
+  <%= link_to 'Go Back', contacts_path, class: 'btn-secondary' %>
+</div>
+

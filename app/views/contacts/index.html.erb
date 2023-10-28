@@ -1,44 +1,50 @@
 <!-- contacts/index.html.erb -->
 
-<!-- Display the page title -->
-<h1>All Contacts</h1>
+<div class="grid grid-cols-6 gap-4 mb-10">
+  <!-- Display the page title -->
+  <h1 class="col-start-1 col-end-3">All Contacts</h1>
 
-<!-- Link to create a new contact -->
-<%= link_to 'New Contact', contacts_new_path %>
+  <!-- Link to create a new contact -->
+  <%= link_to 'New Contact', new_contact_path, class: 'col-end-7 col-span-1 btn-primary' %>
+</div>
+
 
 <!-- Create a table for displaying contacts -->
-<table>
-  <thead>
-  <!-- Define table header row -->
-  <tr>
-    <!-- Column headers for contact attributes -->
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <!-- Iterate through each contact in the @contacts list -->
-  <% @contacts.each do |contact| %>
-    <!-- Create a table row for each contact -->
+<div class="relative overflow-x-auto">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <!-- Define table header row -->
     <tr>
-      <!-- Display contact attributes in corresponding columns -->
-      <td><%= contact.first_name %></td>
-      <td><%= contact.last_name %></td>
-      <td><%= contact.email %></td>
-      <td><%= contact.phone %></td>
-      <td>
-        <!-- Links for showing, editing, and deleting a contact -->
-        <%= link_to 'Show', contact_path(contact) %>
-        <%= link_to 'Edit', edit_contact_path(contact) %>
-        <%= link_to "Destroy", contact_path(contact), data: {
-          turbo_method: :delete,   # Specify a Turbo Stream delete method
-          turbo_confirm: "Are you sure?"  # Display a confirmation dialog
-        } %>
-      </td>
+      <!-- Column headers for contact attributes -->
+      <th scope="col" class="px-6 py-3">First Name</th>
+      <th scope="col" class="px-6 py-3">Last Name</th>
+      <th scope="col" class="px-6 py-3">Email</th>
+      <th scope="col" class="px-6 py-3">Phone</th>
+      <th scope="col" class="px-6 py-3">Action</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+    <!-- Iterate through each contact in the @contacts list -->
+    <% @contacts.each do |contact| %>
+      <!-- Create a table row for each contact -->
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <!-- Display contact attributes in corresponding columns -->
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"><%= contact.first_name %></th>
+        <td class="px-6 py-4"><%= contact.last_name %></td>
+        <td class="px-6 py-4"><%= contact.email %></td>
+        <td class="px-6 py-4"><%= contact.phone %></td>
+        <td>
+          <!-- Links for showing, editing, and deleting a contact -->
+          <%= link_to 'Show', contact_path(contact) %>
+          <%= link_to 'Edit', edit_contact_path(contact) %>
+          <%= link_to "Destroy", contact_path(contact), data: {
+            turbo_method: :delete,   # Specify a Turbo Stream delete method
+            turbo_confirm: "Are you sure?"  # Display a confirmation dialog
+          } %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
